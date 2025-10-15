@@ -1,0 +1,36 @@
+# Large data files
+*.mat
+*.fdt
+*.set
+
+# MATLAB autosave
+*.asv
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+.claude/
+
+# Temp files
+*~
+*.tmp
+
+# Large result files
+*.tif
+*.png
+*.jpg
+*.pdf
+
+# Archive folders
+archive/old_*
+BABBLE_CODE-main/
+
+# Data folders (keep structure, ignore large data)
+data/*.mat
+eeg_raw/*.fdt
+eeg_raw/*.set
+surr/*.mat

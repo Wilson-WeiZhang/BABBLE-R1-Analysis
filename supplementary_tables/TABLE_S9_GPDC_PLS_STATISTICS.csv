@@ -1,0 +1,83 @@
+Connection,Condition,Frequency_Band,N,N_connections,M_GPDC,SD_GPDC,VIP_score,Beta_weight,SE_beta,CI_lower,CI_upper,Significant_Predictor
+Frontal→Parietal,Full gaze,Theta,44,44,[INSERT],0.XX,[VIP],[beta],[SE],[CI-low],[CI-high],Yes/No
+Frontal→Parietal,Full gaze,Alpha,44,44,[INSERT],0.XX,[VIP],[beta],[SE],[CI-low],[CI-high],Yes/No
+Frontal→Central,Full gaze,Theta,44,44,[INSERT],0.XX,[VIP],[beta],[SE],[CI-low],[CI-high],Yes/No
+Frontal→Central,Full gaze,Alpha,44,44,[INSERT],0.XX,[VIP],[beta],[SE],[CI-low],[CI-high],Yes/No
+Parietal→Frontal,Full gaze,Theta,44,44,[INSERT],0.XX,[VIP],[beta],[SE],[CI-low],[CI-high],Yes/No
+Parietal→Frontal,Full gaze,Alpha,44,44,[INSERT],0.XX,[VIP],[beta],[SE],[CI-low],[CI-high],Yes/No
+Parietal→Central,Full gaze,Theta,44,44,[INSERT],0.XX,[VIP],[beta],[SE],[CI-low],[CI-high],Yes/No
+Parietal→Central,Full gaze,Alpha,44,44,[INSERT],0.XX,[VIP],[beta],[SE],[CI-low],[CI-high],Yes/No
+Central→Frontal,Full gaze,Theta,44,44,[INSERT],0.XX,[VIP],[beta],[SE],[CI-low],[CI-high],Yes/No
+Central→Frontal,Full gaze,Alpha,44,44,[INSERT],0.XX,[VIP],[beta],[SE],[CI-low],[CI-high],Yes/No
+Central→Parietal,Full gaze,Theta,44,44,[INSERT],0.XX,[VIP],[beta],[SE],[CI-low],[CI-high],Yes/No
+Central→Parietal,Full gaze,Alpha,44,44,[INSERT],0.XX,[VIP],[beta],[SE],[CI-low],[CI-high],Yes/No
+
+BETWEEN-CONDITION COMPARISONS:
+Connection,Frequency_Band,Comparison,N1,N2,M_diff,SE_diff,t,df,p_uncorrected,q_FDR,Hedges_g,CI_lower,CI_upper,Significant
+Frontal→Parietal,Theta,Full vs No gaze,44,43,[INSERT],0.XX,[t],[df],[p],[q],[g],[CI-low],[CI-high],Yes/No
+Frontal→Parietal,Theta,Full vs Averted,44,42,[INSERT],0.XX,[t],[df],[p],[q],[g],[CI-low],[CI-high],Yes/No
+Frontal→Parietal,Alpha,Full vs No gaze,44,43,[INSERT],0.XX,[t],[df],[p],[q],[g],[CI-low],[CI-high],Yes/No
+Frontal→Parietal,Alpha,Full vs Averted,44,42,[INSERT],0.XX,[t],[df],[p],[q],[g],[CI-low],[CI-high],Yes/No
+[ADD MORE CONNECTIONS AS NEEDED]
+
+NOTES:
+Column definitions - PLS Analysis:
+- Connection: Directional connection between ROIs (Source→Target)
+- Condition: Experimental condition
+- Frequency_Band: Theta (4-6 Hz) or Alpha (6-9 Hz)
+- N: Number of infants with valid data
+- N_connections: Number of GPDC values averaged per infant
+- M_GPDC: Mean GPDC strength
+- SD_GPDC: Standard deviation of GPDC strength
+- VIP_score: Variable Importance in Projection score from PLS regression
+- Beta_weight: Standardized regression coefficient
+- SE_beta: Standard error of beta weight
+- CI_lower/upper: 95% confidence interval for beta weight
+- Significant_Predictor: VIP > 1.0 indicates important predictor of learning
+
+Column definitions - Between-Condition Comparisons:
+- Comparison: Which conditions are compared
+- N1/N2: Sample sizes for each condition
+- M_diff: Mean difference in GPDC strength between conditions
+- SE_diff: Standard error of the difference
+- t: t-statistic from independent samples t-test
+- df: Degrees of freedom
+- p_uncorrected: Uncorrected p-value
+- q_FDR: FDR-corrected q-value (Benjamini-Hochberg)
+- Hedges_g: Effect size with small sample correction
+- CI_lower/upper: 95% bootstrap confidence interval for effect size
+- Significant: Whether difference is significant (q < .05)
+
+Statistical Methods:
+1. PLS Regression:
+   - Predictors: GPDC strengths for all connections × frequency bands
+   - Outcome: Learning score (Block 4 - Block 1)
+   - Cross-validation: Leave-one-out (LOOCV)
+   - VIP threshold: VIP > 1.0 indicates important predictor
+   - Bootstrap confidence intervals (5000 iterations)
+
+2. Between-Condition Comparisons:
+   - Independent samples t-tests
+   - Assumptions tested before each comparison
+   - FDR correction across all comparisons
+   - Hedges' g with small sample correction
+   - Bootstrap CIs for effect sizes
+
+3. GPDC Calculation:
+   - MVAR model order: Selected via AIC/BIC
+   - Frequency resolution: 0.5 Hz
+   - Averaged across trials and time windows
+   - Surrogate testing for statistical significance
+
+Exclusions:
+- Connections with failed MVAR convergence excluded
+- Infants with >30% artifact-contaminated trials excluded
+- Multivariate outliers excluded (Mahalanobis distance, p<.001)
+
+Instructions for completing:
+1. Run fs2_R1_STATISTICAL_COMPARISON_CORRECTED.m
+2. Run fs6_R1_BETWEEN_CONDITION_GPDC_COMPARISON.m
+3. Extract values from output structures
+4. Replace [INSERT] placeholders with actual values
+5. Add all connection pairs analyzed
+6. Round to 3 decimal places for GPDC values, statistics

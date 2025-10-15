@@ -1,0 +1,95 @@
+Analysis,Variable,Sex,N,M,SD,Statistic,df,p_value,Effect_size,CI_lower,CI_upper,Sex_Effect_Significant
+Learning - Full Gaze,Looking_Time_Diff,Male,24,[INSERT],0.XX,[t/F],[df],[p],[g/d],[CI-low],[CI-high],Yes/No
+Learning - Full Gaze,Looking_Time_Diff,Female,20,[INSERT],0.XX,[t/F],[df],[p],[g/d],[CI-low],[CI-high],Yes/No
+Learning - Full Gaze,Sex_Comparison,Both,44,[INSERT],0.XX,[t],[df],[p],[g],[CI-low],[CI-high],No
+Learning - No Gaze,Looking_Time_Diff,Male,22,[INSERT],0.XX,[t/F],[df],[p],[g/d],[CI-low],[CI-high],Yes/No
+Learning - No Gaze,Looking_Time_Diff,Female,21,[INSERT],0.XX,[t/F],[df],[p],[g/d],[CI-low],[CI-high],Yes/No
+Learning - No Gaze,Sex_Comparison,Both,43,[INSERT],0.XX,[t],[df],[p],[g],[CI-low],[CI-high],No
+Learning - Averted Gaze,Looking_Time_Diff,Male,21,[INSERT],0.XX,[t/F],[df],[p],[g/d],[CI-low],[CI-high],Yes/No
+Learning - Averted Gaze,Looking_Time_Diff,Female,21,[INSERT],0.XX,[t/F],[df],[p],[g/d],[CI-low],[CI-high],Yes/No
+Learning - Averted Gaze,Sex_Comparison,Both,42,[INSERT],0.XX,[t],[df],[p],[g],[CI-low],[CI-high],No
+GPDC - Frontal→Parietal Theta,GPDC_Strength,Male,24,[INSERT],0.XX,[t/F],[df],[p],[g/d],[CI-low],[CI-high],Yes/No
+GPDC - Frontal→Parietal Theta,GPDC_Strength,Female,20,[INSERT],0.XX,[t/F],[df],[p],[g/d],[CI-low],[CI-high],Yes/No
+GPDC - Frontal→Parietal Theta,Sex_Comparison,Both,44,[INSERT],0.XX,[t],[df],[p],[g],[CI-low],[CI-high],No
+GPDC - Frontal→Parietal Alpha,GPDC_Strength,Male,24,[INSERT],0.XX,[t/F],[df],[p],[g/d],[CI-low],[CI-high],Yes/No
+GPDC - Frontal→Parietal Alpha,GPDC_Strength,Female,20,[INSERT],0.XX,[t/F],[df],[p],[g/d],[CI-low],[CI-high],Yes/No
+GPDC - Frontal→Parietal Alpha,Sex_Comparison,Both,44,[INSERT],0.XX,[t],[df],[p],[g],[CI-low],[CI-high],No
+[ADD MORE GPDC CONNECTIONS AS NEEDED]
+Neural Entrainment,Cross_Correlation,Male,24,[INSERT],0.XX,[t/F],[df],[p],[g/d],[CI-low],[CI-high],Yes/No
+Neural Entrainment,Cross_Correlation,Female,20,[INSERT],0.XX,[t/F],[df],[p],[g/d],[CI-low],[CI-high],Yes/No
+Neural Entrainment,Sex_Comparison,Both,44,[INSERT],0.XX,[t],[df],[p],[g],[CI-low],[CI-high],No
+CDI Comprehension,CDI_Score,Male,24,[INSERT],0.XX,[t/F],[df],[p],[g/d],[CI-low],[CI-high],Yes/No
+CDI Comprehension,CDI_Score,Female,20,[INSERT],0.XX,[t/F],[df],[p],[g/d],[CI-low],[CI-high],Yes/No
+CDI Comprehension,Sex_Comparison,Both,44,[INSERT],0.XX,[t],[df],[p],[g],[CI-low],[CI-high],No
+
+LME MODEL WITH SEX AS COVARIATE:
+Model,Fixed_Effect,Estimate,SE,t_value,df,p_value,CI_lower,CI_upper,Significant
+Learning_Model,Intercept,[beta],0.XX,[t],[df],[p],[CI-low],[CI-high],Yes/No
+Learning_Model,Condition_Full,[beta],0.XX,[t],[df],[p],[CI-low],[CI-high],Yes/No
+Learning_Model,Condition_Averted,[beta],0.XX,[t],[df],[p],[CI-low],[CI-high],Yes/No
+Learning_Model,Block,[beta],0.XX,[t],[df],[p],[CI-low],[CI-high],Yes/No
+Learning_Model,Sex_Male,[beta],0.XX,[t],[df],[p],[CI-low],[CI-high],No
+Learning_Model,Condition×Block,[beta],0.XX,[t],[df],[p],[CI-low],[CI-high],Yes/No
+Learning_Model,Sex×Block,[beta],0.XX,[t],[df],[p],[CI-low],[CI-high],No
+Learning_Model,Sex×Condition,[beta],0.XX,[t],[df],[p],[CI-low],[CI-high],No
+Learning_Model,Sex×Condition×Block,[beta],0.XX,[t],[df],[p],[CI-low],[CI-high],No
+
+NOTES:
+Column Definitions:
+- Analysis: Type of analysis (Learning, GPDC, Entrainment, CDI)
+- Variable: Dependent variable measured
+- Sex: Male or Female (assigned at birth based on parental report)
+- N: Sample size for each sex
+- M: Mean value
+- SD: Standard deviation
+- Statistic: Test statistic (t for t-tests, F for ANOVA)
+- df: Degrees of freedom
+- p_value: p-value for the test
+- Effect_size: Hedges' g or Cohen's d
+- CI_lower/upper: 95% confidence interval for effect size
+- Sex_Effect_Significant: Whether sex difference is significant (p < .05)
+
+Sex Comparison Rows:
+- These rows show the statistical test comparing males vs females
+- "Both" in Sex column indicates this is the between-sex comparison
+- Non-significant results (p > .05) indicate no sex differences
+
+LME Model:
+- Formula: LookingTime ~ Condition*Block*Sex + (1|Subject)
+- Random effects: Random intercept for each infant
+- Covariates: Sex included as fixed effect
+- Interactions: All 2-way and 3-way interactions tested
+- Expected result: Sex main effect and interactions non-significant
+
+Statistical Methods:
+1. Within-sex analyses:
+   - Separate analyses for males and females
+   - Paired t-tests for learning (Block 1 vs 4)
+   - Independent t-tests for between-sex comparisons
+   - Effect sizes: Hedges' g with small sample correction
+
+2. LME model with sex covariate:
+   - Maximum likelihood estimation
+   - Satterthwaite approximation for df
+   - Type III tests for fixed effects
+   - Collinearity checked (VIF < 5 for all predictors)
+   - Assumptions tested: normality of residuals, homoscedasticity
+
+3. Multiple testing correction:
+   - FDR correction across all sex comparisons
+   - Critical threshold: q < .05
+
+Sample Characteristics:
+- Total N: 47 infants (24 male, 23 female)
+- Age: M = 9.8 months (SD = 0.4), no sex difference, t(45) = 0.32, p = .75
+- Per-condition N varies due to missing data
+- Sex ratio balanced across conditions (χ² test, p > .10)
+
+Instructions for completing:
+1. Run fs2_R1_STATISTICAL_COMPARISON_CORRECTED.m with sex as grouping variable
+2. Fit LME model including Sex as fixed effect and all interactions
+3. Extract disaggregated statistics for each sex
+4. Replace [INSERT] placeholders with actual values
+5. Add all GPDC connections analyzed
+6. Report exact p-values, round statistics to 2-3 decimal places
+7. If any sex effects are significant (p < .05), flag for discussion

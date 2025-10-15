@@ -1,0 +1,170 @@
+========================================================================
+RESPONSE TO REVIEWER COMMENT 1.2
+========================================================================
+
+REVIEWER COMMENT:
+Regarding the statistical approach, an important comparison appears to be missing:
+the neural coupling values (GPDC) should be compared directly between conditions
+(gaze/no gaze), not only against surrogate data. This would help validate whether
+specific connections are significantly stronger in the gaze condition, and whether
+these connections are associated with infants' attention, learning, and CDI scores.
+Also, in the current comparison to the surrogate data, it would also be useful to
+test specifically the connections identified in the gaze condition and include only
+them in the PLS model.
+
+------------------------------------------------------------------------
+RESPONSE:
+------------------------------------------------------------------------
+
+Thank you for this important suggestion regarding direct comparison of GPDC values
+between conditions. We apologize for not presenting this analysis more prominently.
+We actually performed this analysis in the initial submission (page X, lines X,
+detailed in Supplementary Section 4), but we agree it needs clearer presentation
+and further analysis related to behavioral measurements and CDI to provide
+additional verification supporting our main results.
+
+Following your suggestions, we have now:
+(1) Made the condition comparison analysis more prominent in the main text
+(2) Conducted comprehensive behavioral association analyses
+(3) Implemented a focused analytical approach for gaze-specific connections
+
+
+------------------------------------------------------------------------
+1. DIRECT COMPARISON OF GPDC BETWEEN GAZE CONDITIONS
+------------------------------------------------------------------------
+
+We compared GPDC values across gaze conditions using linear mixed-effects models:
+
+    Model: GPDC ~ Gaze Condition + Age + Sex + Country + (1|Subject ID)
+
+After BHFDR correction for multiple comparisons across all connections that
+survived surrogate testing (Fig. 3b), only one AI connection showed significant
+gaze modulation:
+
+    Connection: Adult Fz → Infant F4 (alpha band)
+    Effect: Full gaze > Partial/No gaze
+    Statistics: t(221) = 3.48, BHFDR-corrected p = 0.048
+
+This finding establishes that ostensive gaze significantly enhances frontal
+adult-to-infant connectivity during word learning.
+
+
+------------------------------------------------------------------------
+2. BEHAVIORAL SIGNIFICANCE OF THE IDENTIFIED CONNECTION
+------------------------------------------------------------------------
+
+Following your suggestion, we examined relationships between the gaze-modulated
+AI connection (Fz→F4) and behavioral measures:
+
+2.1 RELATIONSHIP WITH ATTENTION
+    We found a significant interaction between AI connectivity and gaze condition
+    on attention:
+
+    β = 0.35 ± 0.11, t(219) = 3.14, p = .002
+
+    AI connectivity predicted attention only in Partial/No gaze conditions,
+    suggesting a compensatory mechanism when ostensive cues are reduced.
+
+2.2 ASSOCIATION WITH CDI SCORES
+    Subject-averaged AI connectivity showed a marginally significant negative
+    association with CDI scores:
+
+    β = -0.33 ± 0.16, t(33) = -2.04, p = .050
+
+    This potentially reflects compensatory mechanisms where infants with lower
+    communicative development levels require stronger frontal connectivity
+    allocations for word learning.
+
+2.3 MEDIATION OF LEARNING EFFECTS
+    Bootstrap mediation analysis (1000 iterations) showed the AI connection
+    significantly mediates gaze effects on learning:
+
+    Indirect effect: β = 0.077, 95% CI [0.005, 0.167], p = .038
+    Direct effect: β = -0.21, 95% CI [-0.478, 0.060], p = .138 (n.s.)
+
+    This indicates that the gaze enhancement of learning operates through
+    increased adult-to-infant frontal connectivity.
+
+
+------------------------------------------------------------------------
+3. GAZE-SPECIFIC CONNECTION VALIDATION AND LME APPROACH
+------------------------------------------------------------------------
+
+Following your suggestion to test connections specifically identified in the gaze
+condition, we performed surrogate testing within the Full gaze condition only
+(rather than pooling across conditions).
+
+However, since only ONE connection survived BHFDR correction in the between-
+condition LME comparison (AI Fz→F4), we opted for a direct LME approach rather
+than PLS regression (which requires multiple predictors):
+
+    Model: Learning ~ AI_FzF4 + Age + Sex + Country + Condition + (1|ID)
+
+    Result: β = -17.10, SE = 7.42, t(219) = -2.30, p = 0.022
+
+    Surrogate validation:
+    - Real R² (from correlation): 0.0222
+    - Surrogate mean R²: 0.0039 (SD = 0.0051)
+    - Surrogate 95th percentile: 0.0152
+    - p-value vs surrogate: 0.011 (SIGNIFICANT)
+
+    - Real R² (LME model): 0.0525
+    - Surrogate mean R²: 0.0342 (SD = 0.0054)
+    - Surrogate 95th percentile: 0.0453
+    - p-value vs surrogate: 0.018 (SIGNIFICANT)
+
+This analysis demonstrates that the AI Fz→F4 connection not only exceeds chance
+in strength but also shows a behaviorally relevant association with learning that
+significantly exceeds what would be expected from the surrogate distribution.
+
+
+------------------------------------------------------------------------
+4. UPDATED MANUSCRIPT SECTIONS
+------------------------------------------------------------------------
+
+We have updated the manuscript as follows:
+
+• Main text: Added explicit between-condition comparison before behavioral
+  analysis (page X, lines X)
+
+• Figure 6a: Now prominently shows the condition comparison for AI Fz→F4,
+  demonstrating Full > Partial/No gaze effect
+
+• Supplementary Section 4: Expanded to include:
+  - Full results of between-condition LME for all connections
+  - Attention interaction analysis
+  - CDI association analysis
+  - Mediation analysis details
+  - Surrogate validation of learning associations
+
+• Methods: Added detailed description of the multi-step analytical pipeline:
+  Step 1: Surrogate testing to identify genuine connections
+  Step 2: Between-condition LME to identify gaze-modulated connections
+  Step 3: Behavioral association testing with surrogate validation
+  Step 4: Mediation analysis to test mechanistic pathways
+
+
+------------------------------------------------------------------------
+SUMMARY
+------------------------------------------------------------------------
+
+Our revised analysis addresses all three aspects of your comment:
+
+1. ✓ Direct condition comparison: AI Fz→F4 shows Full gaze > Partial/No gaze
+     (BHFDR-corrected p = 0.048)
+
+2. ✓ Behavioral associations: The connection relates to attention (interaction
+     with condition), learning (LME), and marginally to CDI scores
+
+3. ✓ Gaze-specific validation: Connection identified within Full gaze condition
+     and validated against surrogates using focused LME (not PLS due to single
+     significant connection after correction)
+
+This multi-step approach strengthens our claim that ostensive gaze enhances
+infant word learning through increased adult-to-infant frontal connectivity,
+with effects validated against both surrogate data and between-condition
+comparisons.
+
+========================================================================
+END OF RESPONSE
+========================================================================

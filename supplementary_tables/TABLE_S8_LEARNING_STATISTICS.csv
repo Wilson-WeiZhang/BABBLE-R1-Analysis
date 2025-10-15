@@ -1,0 +1,43 @@
+Condition,Block,N,M_Block1,SD_Block1,M_Block4,SD_Block4,M_diff,SD_diff,t,df,p_uncorrected,q_FDR,Hedges_g,CI_lower,CI_upper,Learning_Significant
+Full speaker gaze,1→4,44,[INSERT],0.XX,[INSERT],0.XX,[INSERT],0.XX,[t-value],[df],[p-value],[q-value],[effect-size],[CI-lower],[CI-upper],Yes/No
+No speaker gaze,1→4,43,[INSERT],0.XX,[INSERT],0.XX,[INSERT],0.XX,[t-value],[df],[p-value],[q-value],[effect-size],[CI-lower],[CI-upper],Yes/No
+Averted speaker gaze,1→4,42,[INSERT],0.XX,[INSERT],0.XX,[INSERT],0.XX,[t-value],[df],[p-value],[q-value],[effect-size],[CI-lower],[CI-upper],Yes/No
+
+NOTES:
+Column definitions:
+- Condition: Experimental condition (Full/No/Averted speaker gaze)
+- Block: Comparison blocks (1→4 indicates learning from Block 1 to Block 4)
+- N: Sample size (number of infants with valid data in this condition)
+- M_Block1: Mean looking time in Block 1 (seconds)
+- SD_Block1: Standard deviation of looking time in Block 1
+- M_Block4: Mean looking time in Block 4 (seconds)
+- SD_Block4: Standard deviation of looking time in Block 4
+- M_diff: Mean difference score (Block4 - Block1)
+- SD_diff: Standard deviation of difference scores
+- t: t-statistic from paired-samples t-test
+- df: Degrees of freedom (N-1)
+- p_uncorrected: Uncorrected p-value from t-test
+- q_FDR: FDR-corrected q-value using Benjamini-Hochberg procedure
+- Hedges_g: Effect size (Hedges' g with small sample correction)
+- CI_lower: Lower bound of 95% bootstrap confidence interval for Hedges' g
+- CI_upper: Upper bound of 95% bootstrap confidence interval for Hedges' g
+- Learning_Significant: Whether learning was statistically significant (q < .05)
+
+Statistical Methods:
+1. Paired-samples t-tests comparing Block 1 vs Block 4 looking times
+2. FDR correction using Benjamini-Hochberg method (3 comparisons)
+3. Effect sizes calculated as Hedges' g with correction factor J = 1 - 3/(4*df - 1)
+4. Bootstrap confidence intervals (5000 iterations, percentile method)
+5. Assumptions tested: normality (Shapiro-Wilk/Lilliefors), outliers (3*IQR)
+
+Exclusions:
+- Infants with missing data in either Block 1 or Block 4 excluded from that condition
+- Outliers (>3*IQR) excluded before analysis
+- Total sample: N=47 infants, per-condition N varies due to missing data
+
+Instructions for completing:
+1. Run fs2_R1_STATISTICAL_COMPARISON_CORRECTED.m
+2. Extract values from output structure stats.learning
+3. Replace [INSERT] placeholders with actual values
+4. Round to 2 decimal places for means/SDs, 3 for statistics
+5. Report exact p-values down to p=.001, then p<.001
