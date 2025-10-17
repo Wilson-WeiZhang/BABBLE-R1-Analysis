@@ -43,7 +43,7 @@
 
 %% calculate CDI need to read CDI files
 path='/Users/zw/Library/CloudStorage/OneDrive-NanyangTechnologicalUniversity/'
-path='C:\Users\Admin\OneDrive - Nanyang Technological University\/'
+%path='C:\Users\Admin\OneDrive - Nanyang Technological University\/'
 [a1,b1]=xlsread([path,'infanteeg/CAM BABBLE EEG DATA/2024/CDI/CDI_and other raw ques_for47subjectUKSG_Wilson.xlsx'],'Sheet1');
 % a1 10 =CDI P
 % a1 11 =CDI W
